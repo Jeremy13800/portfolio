@@ -1,0 +1,30 @@
+body {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.parallax {
+  background: url("hero-background.jpg") center/cover no-repeat fixed;
+  height: 100vh;
+}
+section {
+  padding: 8rem 0;
+}
+.project-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
