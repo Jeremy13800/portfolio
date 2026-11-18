@@ -1,0 +1,15 @@
+# Dépendances et sorties de build
+node_modules/
+dist/
+.vercel/
+
+# Environnement et journaux
+.env
+.env.*
+!.env.example
+*.log
+npm-debug.log*
+
+# Système
+.DS_Store
+Thumbs.db
