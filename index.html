@@ -83,87 +83,178 @@
         </div>
 
         <div class="projects">
-          <!-- Projet mis en avant : Quantika (choix provisoire, cohérent avec l'identité astronomie + code) -->
+          <!-- 01 — Projet phare : Auprodio -->
           <article class="project project--lead reveal" aria-labelledby="p1-title">
-            <div class="shot shot--placeholder" role="img" aria-label="Emplacement provisoire pour une capture de Quantika">
-              <span class="badge">Capture à fournir</span>
-              <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span><b>quantika</b></div>
+            <div class="shot">
+              <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span><b>auprodio.fr</b></div>
               <div class="shot__body">
-                <p class="mono"><span>Quantika</span><span>capture d'écran réelle à venir</span></p>
+                <picture>
+                  <source type="image/avif" srcset="/src/img/auprodio-640.avif 640w, /src/img/auprodio-1280.avif 1280w, /src/img/auprodio-1600.avif 1600w" sizes="(min-width: 80em) 700px, (min-width: 64em) 55vw, 90vw" />
+                  <img src="/src/img/auprodio-1280.webp" srcset="/src/img/auprodio-640.webp 640w, /src/img/auprodio-1280.webp 1280w, /src/img/auprodio-1600.webp 1600w" sizes="(min-width: 80em) 700px, (min-width: 64em) 55vw, 90vw" width="1600" height="1000" loading="lazy" decoding="async"
+                    alt="Capture de la page d'accueil d'Auprodio : titre « Créer. Capturer. Raconter. » sur une vidéo de montagnes, avec la navigation et le bouton « Parler d'un projet »" />
+                </picture>
               </div>
             </div>
 
             <div class="project__body">
-              <p class="mono project__meta"><b>Projet 01</b><span>Application web</span><span>Statut : [à préciser]</span></p>
-              <h3 id="p1-title">Quantika</h3>
-              <p>Application d'astronomie avec visualisation 3D des constellations et données interactives.</p>
-              <ul class="tags" aria-label="Technologies"><li class="tag">Next.js</li><li class="tag">TypeScript</li></ul>
+              <p class="mono project__meta"><b>Projet 01</b><span>Site vitrine professionnel</span><span>En ligne</span></p>
+              <h3 id="p1-title">Auprodio</h3>
+              <p>Site vitrine d'un vidéaste professionnel basé à Istres : films de mariage, événements et concerts, films de marque, publicité et captation drone.</p>
+              <ul class="tags" aria-label="Technologies"><li class="tag">Next.js</li><li class="tag">TypeScript</li><li class="tag">Tailwind CSS</li><li class="tag">Framer Motion</li></ul>
 
               <dl class="facts facts--cols">
-                <div><dt>En bref</dt><dd class="todo">[À compléter : contexte, objectif et public visé]</dd></div>
-                <div><dt>Côté technique</dt><dd>Next.js, TypeScript. <span class="todo">[À compléter : architecture, rendu 3D, source des données]</span></dd></div>
+                <div><dt>Ce que j'ai réalisé</dt><dd>La conception et l'intégration du site : identité visuelle, expérience utilisateur, version mobile et référencement naturel.</dd></div>
+                <div><dt>Côté technique</dt><dd>Next.js 16 et TypeScript, formulaire de contact protégé contre le spam, back-office pour gérer les réalisations, SEO technique et local.</dd></div>
               </dl>
 
               <details class="deep">
                 <summary>Sous le capot · pour les recruteurs</summary>
-                <ul class="todo">
-                  <li>[Architecture et organisation du code]</li>
-                  <li>[Choix techniques et leur justification]</li>
-                  <li>[Difficultés rencontrées et solutions]</li>
-                  <li>[Performance et accessibilité : mesures réelles]</li>
+                <ul>
+                  <li>Next.js 16 (App Router, Server Components), React 19, TypeScript, Tailwind CSS 4.</li>
+                  <li>Vidéo d'ouverture avec repli si le mouvement est réduit ou si la vidéo ne charge pas.</li>
+                  <li>Métadonnées Open Graph, sitemap et robots générés, données structurées (ProfessionalService, VideoObject).</li>
+                  <li>Formulaire : validation côté serveur, anti-spam (case piège et délai minimal), envoi par e-mail via Resend.</li>
+                  <li>Back-office /admin : authentification sans dépendance externe, réalisations stockées sur Vercel Blob.</li>
                 </ul>
               </details>
 
-              <a class="card-link text-link" href="/projets/quantika">
-                Lire l'étude de cas <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow" /></svg>
-                <span class="visually-hidden">: Quantika</span>
-              </a>
+              <div class="project__actions">
+                <a class="card-link text-link" href="/projets/auprodio">
+                  Lire l'étude de cas <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow" /></svg>
+                  <span class="visually-hidden">: Auprodio</span>
+                </a>
+                <a class="text-link ext-link" href="https://www.auprodio.fr/" target="_blank" rel="noopener noreferrer">
+                  Voir le site <svg class="ext" width="14" height="14" aria-hidden="true"><use href="#i-external" /></svg>
+                  <span class="visually-hidden">(s'ouvre dans un nouvel onglet)</span>
+                </a>
+              </div>
             </div>
           </article>
 
           <div class="projects projects--pair">
+            <!-- 02 — MyPlayerTwo -->
             <article class="project reveal" aria-labelledby="p2-title">
               <div class="shot">
-                <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span><b>beercraft</b></div>
+                <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span><b>myplayertwo.app</b></div>
                 <div class="shot__body">
                   <picture>
-                    <source type="image/avif" srcset="/src/img/beercraft-640.avif 640w, /src/img/beercraft-1280.avif 1280w" sizes="(min-width: 80em) 570px, (min-width: 48em) 45vw, 90vw" />
-                    <img src="/src/img/beercraft-1280.webp" srcset="/src/img/beercraft-640.webp 640w, /src/img/beercraft-1280.webp 1280w" sizes="(min-width: 80em) 570px, (min-width: 48em) 45vw, 90vw" width="1280" height="603" loading="lazy" decoding="async"
-                      alt="Capture réelle de BeerCraft : page « Collection de bières » avec trois bouteilles et les boutons Connexion et Inscription" />
+                    <source type="image/avif" srcset="/src/img/myplayertwo-640.avif 640w, /src/img/myplayertwo-1280.avif 1280w" sizes="(min-width: 80em) 570px, (min-width: 48em) 45vw, 90vw" />
+                    <img src="/src/img/myplayertwo-1280.webp" srcset="/src/img/myplayertwo-640.webp 640w, /src/img/myplayertwo-1280.webp 1280w" sizes="(min-width: 80em) 570px, (min-width: 48em) 45vw, 90vw" width="1600" height="1000" loading="lazy" decoding="async"
+                      alt="Capture de la page d'accueil de MyPlayerTwo : titre « Trouve ton Player Two », formulaire de liste d'attente et illustration de deux joueurs devant leurs écrans" />
                   </picture>
                 </div>
               </div>
               <div class="project__body">
-                <p class="mono project__meta"><b>Projet 02</b><span>Catalogue et back-office</span></p>
-                <h3 id="p2-title">BeerCraft</h3>
-                <p>Catalogue de bières artisanales avec back-office d'administration et gestion des stocks.</p>
-                <ul class="tags" aria-label="Technologies"><li class="tag">PHP</li><li class="tag">SQL</li></ul>
-                <a class="card-link text-link" href="/projets/beercraft">
-                  Lire l'étude de cas <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow" /></svg>
-                  <span class="visually-hidden">: BeerCraft</span>
-                </a>
+                <p class="mono project__meta"><b>Projet 02</b><span>Landing page</span><span>Pré-lancement</span></p>
+                <h3 id="p2-title">MyPlayerTwo</h3>
+                <p>Landing page d'une future application de rencontre dédiée à la culture geek : concept, liste d'attente et programme de membres fondateurs. Direction artistique, expérience utilisateur et développement.</p>
+                <p class="note">L'application mobile est en cours de développement et n'est pas encore disponible.</p>
+                <ul class="tags" aria-label="Technologies"><li class="tag">Next.js</li><li class="tag">TypeScript</li><li class="tag">Tailwind CSS</li><li class="tag">Prisma</li><li class="tag">PostgreSQL</li></ul>
+                <div class="project__actions">
+                  <a class="card-link text-link" href="/projets/myplayertwo">
+                    Lire l'étude de cas <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow" /></svg>
+                    <span class="visually-hidden">: MyPlayerTwo</span>
+                  </a>
+                  <a class="text-link ext-link" href="https://myplayertwo.app/" target="_blank" rel="noopener noreferrer">
+                    Voir la landing page <svg class="ext" width="14" height="14" aria-hidden="true"><use href="#i-external" /></svg>
+                    <span class="visually-hidden">(s'ouvre dans un nouvel onglet)</span>
+                  </a>
+                </div>
               </div>
             </article>
 
+            <!-- 03 — ASL (capture anonymisée, aucun lien public) -->
             <article class="project reveal" data-i="1" aria-labelledby="p3-title">
-              <div class="shot shot--placeholder" role="img" aria-label="Emplacement provisoire pour une capture de Let's Cook">
-                <span class="badge">Capture à fournir</span>
-                <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span><b>lets-cook</b></div>
+              <div class="shot">
+                <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span><b>asl</b></div>
                 <div class="shot__body">
-                  <p class="mono"><span>Let's Cook</span><span>capture d'écran réelle à venir</span></p>
+                  <picture>
+                    <source type="image/avif" srcset="/src/img/asl-carte-640.avif 640w, /src/img/asl-carte-1280.avif 1280w" sizes="(min-width: 80em) 570px, (min-width: 48em) 45vw, 90vw" />
+                    <img src="/src/img/asl-carte-1280.webp" srcset="/src/img/asl-carte-640.webp 640w, /src/img/asl-carte-1280.webp 1280w" sizes="(min-width: 80em) 570px, (min-width: 48em) 45vw, 90vw" width="1499" height="937" loading="lazy" decoding="async"
+                      alt="Capture de l'interface ASL : page « Gestion des propriétaires » avec la navigation latérale et un tableau de propriétaires (données fictives)" />
+                  </picture>
                 </div>
               </div>
               <div class="project__body">
-                <p class="mono project__meta"><b>Projet 03</b><span>Plateforme de recettes</span></p>
-                <h3 id="p3-title">Let's Cook</h3>
-                <p>Plateforme de partage de recettes avec gestion de profil et favoris.</p>
-                <ul class="tags" aria-label="Technologies"><li class="tag">React</li><li class="tag">Tailwind</li></ul>
-                <a class="card-link text-link" href="/projets/lets-cook">
-                  Lire l'étude de cas <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow" /></svg>
-                  <span class="visually-hidden">: Let's Cook</span>
-                </a>
+                <p class="mono project__meta"><b>Projet 03</b><span>Application métier</span><span>Besoin réel</span></p>
+                <h3 id="p3-title">ASL</h3>
+                <p>Application web de gestion pour une copropriété : propriétaires, contrats, devis, factures, assemblées et appels de fonds. J'ai développé l'intégralité du frontend (Next.js) et contribué au backend NestJS.</p>
+                <p class="note">Aucune version accessible au public.</p>
+                <ul class="tags" aria-label="Technologies"><li class="tag">Next.js</li><li class="tag">TypeScript</li><li class="tag">NestJS</li><li class="tag">Prisma</li><li class="tag">PostgreSQL</li></ul>
+                <div class="project__actions">
+                  <a class="card-link text-link" href="/projets/asl">
+                    Lire l'étude de cas <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow" /></svg>
+                    <span class="visually-hidden">: ASL</span>
+                  </a>
+                </div>
               </div>
             </article>
+          </div>
+
+          <!-- Projets antérieurs : présentation volontairement plus discrète -->
+          <div class="explorations reveal">
+            <div class="explorations__head">
+              <h3 id="explo-title">Mes premières explorations</h3>
+              <p>Des projets antérieurs, conservés comme trace de mon parcours.</p>
+            </div>
+
+            <div class="projects projects--compact">
+              <article class="project project--compact" aria-labelledby="p4-title">
+                <div class="shot">
+                  <div class="shot__body">
+                    <picture>
+                      <source type="image/avif" srcset="/src/img/beercraft-640.avif 640w, /src/img/beercraft-1280.avif 1280w" sizes="(min-width: 48em) 176px, 90vw" />
+                      <img src="/src/img/beercraft-640.webp" srcset="/src/img/beercraft-640.webp 640w, /src/img/beercraft-1280.webp 1280w" sizes="(min-width: 48em) 176px, 90vw" width="1280" height="603" loading="lazy" decoding="async"
+                        alt="Capture de BeerCraft : page « Collection de bières » avec trois bouteilles et les boutons Connexion et Inscription" />
+                    </picture>
+                  </div>
+                </div>
+                <div class="project__body">
+                  <p class="mono project__meta"><b>Projet 04</b><span>Application web</span></p>
+                  <h4 id="p4-title">BeerCraft</h4>
+                  <p>Catalogue de bières en PHP / MySQL, en architecture MVC : authentification, commentaires et tableau de bord administrateur.</p>
+                  <ul class="tags" aria-label="Technologies"><li class="tag">PHP</li><li class="tag">MySQL</li><li class="tag">MVC</li></ul>
+                  <div class="project__actions">
+                    <a class="card-link text-link" href="/projets/beercraft">
+                      Lire l'étude de cas <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow" /></svg>
+                      <span class="visually-hidden">: BeerCraft</span>
+                    </a>
+                    <a class="text-link ext-link" href="https://github.com/Jeremy13800/BeerCraft-mvc" target="_blank" rel="noopener noreferrer">
+                      Code source <svg class="ext" width="14" height="14" aria-hidden="true"><use href="#i-external" /></svg>
+                      <span class="visually-hidden">de BeerCraft sur GitHub (s'ouvre dans un nouvel onglet)</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="project project--compact" data-i="1" aria-labelledby="p5-title">
+                <div class="shot">
+                  <div class="shot__body">
+                    <picture>
+                      <source type="image/avif" srcset="/src/img/quantika-640.avif 640w, /src/img/quantika-1280.avif 1280w" sizes="(min-width: 48em) 176px, 90vw" />
+                      <img src="/src/img/quantika-640.webp" srcset="/src/img/quantika-640.webp 640w, /src/img/quantika-1280.webp 1280w" sizes="(min-width: 48em) 176px, 90vw" width="1600" height="1000" loading="lazy" decoding="async"
+                        alt="Capture de la page d'accueil de Quantika : titre « Les Forces de l'Univers : Astronomie et Physique » sur un fond de nébuleuse" />
+                    </picture>
+                  </div>
+                </div>
+                <div class="project__body">
+                  <p class="mono project__meta"><b>Projet 05</b><span>Application web éducative</span></p>
+                  <h4 id="p5-title">Quantika</h4>
+                  <p>Application consacrée à l'astronomie, à la physique cosmique et à la mécanique quantique : image du jour de la NASA, suivi de la station spatiale, visualisations 3D.</p>
+                  <ul class="tags" aria-label="Technologies"><li class="tag">Next.js</li><li class="tag">TypeScript</li><li class="tag">Three.js</li></ul>
+                  <div class="project__actions">
+                    <a class="card-link text-link" href="/projets/quantika">
+                      Lire l'étude de cas <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow" /></svg>
+                      <span class="visually-hidden">: Quantika</span>
+                    </a>
+                    <a class="text-link ext-link" href="https://github.com/Jeremy13800/quantika2" target="_blank" rel="noopener noreferrer">
+                      Code source <svg class="ext" width="14" height="14" aria-hidden="true"><use href="#i-external" /></svg>
+                      <span class="visually-hidden">de Quantika sur GitHub (s'ouvre dans un nouvel onglet)</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </div>

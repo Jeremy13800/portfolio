@@ -1571,3 +1571,247 @@ picture {
 .shot__body picture {
   height: 100%;
 }
+
+/* ---- Projets : actions, notes, projets antérieurs ------------------------- */
+.project__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1.5rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+.ext-link {
+  position: relative;
+  z-index: 4; /* reste cliquable au-dessus du lien étendu de la carte */
+}
+.ext-link .ext {
+  flex: none;
+  transition: transform 0.25s var(--ease);
+}
+.ext-link:hover .ext {
+  transform: translate(2px, -2px);
+}
+.project .note {
+  font-size: 0.875rem;
+  color: var(--subtle);
+}
+.project h4,
+.h3-s {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.project h4 {
+  font-size: clamp(1.5rem, 1.25rem + 0.8vw, 1.875rem);
+}
+.h3-s {
+  font-size: clamp(1.5rem, 1.25rem + 0.8vw, 1.875rem);
+  margin-bottom: 1rem;
+}
+
+.explorations {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+  padding-top: clamp(1.75rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--line);
+}
+.explorations__head {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+.explorations__head h3 {
+  font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
+}
+.explorations__head p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+.projects--compact {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0;
+}
+.project--compact {
+  padding: 0.9rem;
+  gap: 0.9rem;
+  border-radius: 1rem;
+  background: rgba(15, 21, 39, 0.35);
+}
+.project--compact .shot {
+  border-radius: 0.6rem;
+}
+.project--compact .shot__body {
+  aspect-ratio: 21 / 8; /* bandeau fin sur mobile */
+}
+.project--compact .project__body {
+  gap: 0.7rem;
+  padding: 0;
+}
+.project--compact .project__body p {
+  font-size: 0.9375rem;
+}
+@media (hover: hover) {
+  .project--compact:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .project--compact:hover .shot__body img {
+    transform: none;
+  }
+}
+@media (min-width: 48em) {
+  .project--compact {
+    grid-template-columns: 11rem 1fr;
+    align-items: start;
+  }
+  .project--compact .shot__body {
+    aspect-ratio: 16 / 10;
+  }
+}
+@media (min-width: 64em) {
+  .projects--compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- Pages d'étude de cas : compléments ----------------------------------- */
+.case-meta dd a,
+.case-meta dd .ext-link {
+  color: var(--cobalt-soft);
+  text-underline-offset: 0.25em;
+}
+@media (min-width: 48em) {
+  .case-meta {
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  }
+}
+.two-col {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 64em) {
+  .two-col {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 4rem;
+  }
+}
+.prose {
+  display: grid;
+  gap: 1rem;
+  color: var(--muted);
+  max-width: 40rem;
+}
+.checklist {
+  display: grid;
+  gap: 0.8rem;
+}
+.checklist li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--muted);
+}
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--cobalt-soft);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+}
+@media (min-width: 48em) {
+  .feature-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2.5rem;
+  }
+}
+.brief ul {
+  display: grid;
+  gap: 0.6rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+.brief li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+.brief li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--subtle);
+}
+.status-box {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+}
+.status-box h3 {
+  font-size: 1.5rem;
+}
+.shots {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 48em) {
+  .shots--pair {
+    grid-template-columns: minmax(0, 1fr) 15rem;
+    align-items: end;
+  }
+}
+.phone {
+  max-width: 15rem;
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 1.6rem;
+  background: var(--surface);
+  overflow: hidden;
+}
+.phone img {
+  width: 100%;
+  height: auto;
+  border-radius: 1.15rem;
+}
+.project h4 {
+  margin: 0;
+}
+.project--compact .shot__body img {
+  object-position: 50% 40%;
+}
+.prose {
+  align-content: start;
+}
+
+/* Capture à ratio naturel (étude de cas) et légende */
+.shot__body--auto {
+  aspect-ratio: auto;
+}
+.shot__body--auto img {
+  height: auto;
+  object-fit: initial;
+}
+.caption {
+  margin-top: 0.9rem;
+  font-size: 0.875rem;
+  color: var(--subtle);
+}
+@media (min-width: 48em) {
+  .brief--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.brief--1 {
+  max-width: 40rem;
+}
+@media (min-width: 48em) {
+  .brief--1 {
+    grid-template-columns: 1fr;
+  }
+}

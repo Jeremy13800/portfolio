@@ -15,7 +15,18 @@ const outDir = path.join(root, "src", "img");
 
 /** nom de sortie → { fichier source, largeurs } */
 const jobs = [
+  // Captures réelles des projets (format 16:10) : carte principale (jusqu'à 1600), cartes secondaires, vignettes
+  { name: "auprodio", file: "auprodio.png", widths: [640, 1280, 1600], avifQ: 50, webpQ: 80 },
+  { name: "myplayertwo", file: "myplayertwo.png", widths: [640, 1280], avifQ: 50, webpQ: 80 },
   { name: "beercraft", file: "beercraft.png", widths: [640, 1280], avifQ: 50, webpQ: 78 },
+  { name: "quantika", file: "quantika.png", widths: [640, 1280], avifQ: 50, webpQ: 80 },
+  // Captures mobiles (390 px de large, capturées en x2) pour les pages d'étude de cas
+  { name: "auprodio-mobile", file: "auprodio-mobile.png", widths: [390, 780], avifQ: 50, webpQ: 80 },
+  { name: "myplayertwo-mobile", file: "myplayertwo-mobile.png", widths: [390, 780], avifQ: 50, webpQ: 80 },
+  // ASL : captures ANONYMISÉES uniquement (données personnelles remplacées par des données fictives).
+  // Ne jamais placer ici la capture d'origine.
+  { name: "asl-carte", file: "asl-carte.png", widths: [640, 1280], avifQ: 60, webpQ: 85 },
+  { name: "asl-ecran", file: "asl-ecran.png", widths: [640, 1280, 1904], avifQ: 60, webpQ: 85 },
   { name: "galaxie-provisoire", file: "galaxie-provisoire.webp", widths: [688], avifQ: 50, webpQ: 78 },
 ];
 

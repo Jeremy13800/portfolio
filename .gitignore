@@ -13,3 +13,9 @@ npm-debug.log*
 # Système
 .DS_Store
 Thumbs.db
+
+# Captures d'écran brutes : elles peuvent contenir des données personnelles.
+# Seules les versions anonymisées (assets-src/asl-*.png, src/img/asl-*) doivent être versionnées.
+Capture d*cran*
+Screenshot*
+*NE-PAS-PUBLIER*

@@ -22,7 +22,7 @@ Node `^20.19.0 || >=22.12.0` requis (Vite 8).
 ```
 index.html                  Accueil (Hero, Projets, À propos, Compétences, Services, Contact)
 404.html                    Page introuvable
-projets/<slug>.html         Une étude de cas par projet (quantika, beercraft, lets-cook)
+projets/<slug>.html         Une étude de cas par projet (auprodio, myplayertwo, asl, beercraft, quantika)
 partials/                   Morceaux communs inclus au build : <!--@include nom-->
   head-common.html            thème, favicon, préchargement des polices, CSS, JS
   chrome.html                 sprite SVG, lien d'évitement, ciel étoilé, bandeau, header

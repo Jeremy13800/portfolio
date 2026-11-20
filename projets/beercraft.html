@@ -4,15 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BeerCraft — étude de cas · Jérémy Cailleux</title>
-  <meta name="description" content="Catalogue de bières artisanales avec back-office d'administration et gestion des stocks." />
+  <meta name="description" content="Application web PHP / MySQL en architecture MVC : catalogue de bières, authentification, commentaires et tableau de bord administrateur." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Jérémy Cailleux" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:title" content="BeerCraft — étude de cas" />
-  <meta property="og:description" content="Catalogue de bières artisanales avec back-office d'administration et gestion des stocks." />
+  <meta property="og:description" content="Application web PHP / MySQL en architecture MVC : catalogue de bières, authentification, commentaires et tableau de bord administrateur." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="BeerCraft — étude de cas" />
-  <meta name="twitter:description" content="Catalogue de bières artisanales avec back-office d'administration et gestion des stocks." />
+  <meta name="twitter:description" content="Application web PHP / MySQL en architecture MVC : catalogue de bières, authentification, commentaires et tableau de bord administrateur." />
   <!--@include head-common-->
 </head>
 
@@ -24,12 +24,13 @@
       <div class="container">
         <a class="back-link" href="/#projects"><svg class="flip" width="16" height="16" aria-hidden="true"><use href="#i-arrow" /></svg>Tous les projets</a>
         <h1>BeerCraft</h1>
-        <p class="lead mt-m">Catalogue de bières artisanales avec back-office d'administration et gestion des stocks. <span class="badge">Texte provisoire</span></p>
+        <p class="lead mt-m">Application web PHP / MySQL en architecture MVC : catalogue de bières, authentification, commentaires et tableau de bord administrateur.</p>
         <dl class="case-meta">
-          <div><dt>Type</dt><dd>Catalogue et back-office</dd></div>
-          <div><dt>Rôle</dt><dd class="todo">[à préciser]</dd></div>
-          <div><dt>Année</dt><dd class="todo">[à préciser]</dd></div>
-          <div><dt>Liens</dt><dd class="todo">[démo] · [dépôt]</dd></div>
+          <div><dt>Type</dt><dd>Application web</dd></div>
+          <div><dt>Statut</dt><dd>Projet antérieur</dd></div>
+          <div><dt>Rôle</dt><dd>Conception et développement</dd></div>
+          <div><dt>Année</dt><dd>2025</dd></div>
+          <div><dt>Liens</dt><dd><a class="ext-link" href="https://github.com/Jeremy13800/BeerCraft-mvc" target="_blank" rel="noopener noreferrer">Code source<svg class="ext" width="14" height="14" aria-hidden="true"><use href="#i-external" /></svg><span class="visually-hidden"> de BeerCraft sur GitHub (s'ouvre dans un nouvel onglet)</span></a></dd></div>
         </dl>
       </div>
     </section>
@@ -39,48 +40,66 @@
         <div class="section__head">
           <p class="sector"><b>A</b><i></i>En bref</p>
           <h2 id="brief-title">Le projet en <em>trois phrases</em>.</h2>
-          <p class="lead">Pour un client : l'essentiel, en 20 secondes.</p>
         </div>
         <div class="brief">
-          <div><h3>Besoin</h3><p class="todo">[Quel problème, pour qui ?]</p></div>
-          <div><h3>Solution</h3><p class="todo">[Ce qui a été construit, en langage simple.]</p></div>
-          <div><h3>Résultat</h3><p class="todo">[Résultat réellement observable. Rien d'inventé : si aucun, cette carte disparaît.]</p></div>
+          <div><h3>Le projet</h3><p>Une application web de catalogue de bières, réalisée en PHP et MySQL avec une architecture MVC.</p></div>
+          <div><h3>Ce qui a été construit</h3><p>Un catalogue consultable par tous, avec comptes utilisateurs, commentaires et tableaux de bord pour l'utilisateur et l'administrateur.</p></div>
+          <div><h3>État actuel</h3><p>Projet antérieur, dont le code source est public sur GitHub.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="section section--lift" aria-labelledby="shots-title">
+    <section class="section section--lift" aria-labelledby="context-title">
       <div class="container">
         <div class="section__head">
-          <p class="sector"><b>B</b><i></i>Aperçu</p>
+          <p class="sector"><b>B</b><i></i>Contexte</p>
+          <h2 id="context-title">D'où <em>vient</em> ce projet.</h2>
+        </div>
+        <div class="prose"><p>BeerCraft fait partie de mes premières explorations : construire une application web complète en PHP, avec une base MySQL et une architecture MVC (modèles, vues, contrôleurs).</p></div>
+      </div>
+    </section>
+
+    
+    <section class="section" aria-labelledby="shots-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="sector"><b>C</b><i></i>Aperçu</p>
           <h2 id="shots-title">À <em>l'écran</em>.</h2>
         </div>
         <div class="shot">
-          <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span><b>beercraft</b></div>
-          <div class="shot__body">
-            <picture>
-                    <source type="image/avif" srcset="/src/img/beercraft-640.avif 640w, /src/img/beercraft-1280.avif 1280w" sizes="(min-width: 80em) 1280px, 90vw" />
-                    <img src="/src/img/beercraft-1280.webp" srcset="/src/img/beercraft-640.webp 640w, /src/img/beercraft-1280.webp 1280w" sizes="(min-width: 80em) 1280px, 90vw" width="1280" height="603" loading="lazy" decoding="async"
-                      alt="Capture réelle de BeerCraft : page « Collection de bières » avec trois bouteilles et les boutons Connexion et Inscription" />
-                  </picture>
+            <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span><b>beercraft</b></div>
+            <div class="shot__body">
+              <picture>
+              <source type="image/avif" srcset="/src/img/beercraft-640.avif 640w, /src/img/beercraft-1280.avif 1280w" sizes="(min-width: 80em) 1280px, 90vw" />
+              <img src="/src/img/beercraft-1280.webp" srcset="/src/img/beercraft-640.webp 640w, /src/img/beercraft-1280.webp 1280w" sizes="(min-width: 80em) 1280px, 90vw" width="1280" height="603" loading="lazy" decoding="async"
+                alt="Capture de BeerCraft : page « Collection de bières » avec trois bouteilles et les boutons Connexion et Inscription" />
+            </picture>
+            </div>
           </div>
+      </div>
+    </section>
+
+    <section class="section section--lift" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="sector"><b>D</b><i></i>Fonctionnalités</p>
+          <h2 id="features-title">Ce que le projet <em>permet</em>.</h2>
         </div>
+        <ul class="checklist feature-list"><li>Catalogue : liste et fiche détaillée des bières, catégories.</li><li>Ajout et modification de bières.</li><li>Inscription et connexion des utilisateurs.</li><li>Commentaires sur les bières.</li><li>Tableau de bord utilisateur et tableau de bord administrateur.</li><li>Envoi d'images (dossier d'uploads).</li><li>Fichiers sitemap et robots.</li></ul>
+        
       </div>
     </section>
 
     <section class="section" aria-labelledby="deep-title">
       <div class="container">
         <div class="section__head">
-          <p class="sector"><b>C</b><i></i>Sous le capot</p>
+          <p class="sector"><b>E</b><i></i>Sous le capot</p>
           <h2 id="deep-title">Pour <em>les développeurs</em>.</h2>
-          <p class="lead">Architecture, choix techniques, difficultés : le détail pour qui veut vérifier le travail.</p>
         </div>
-        <ul class="tags mb-m" aria-label="Technologies"><li class="tag">PHP</li><li class="tag">SQL</li></ul>
-        <div class="brief">
-          <div><h3>Architecture</h3><p class="todo">[Organisation du code, rendu, données.]</p></div>
-          <div><h3>Choix et compromis</h3><p class="todo">[Pourquoi ces technologies, ce qui a été écarté.]</p></div>
-          <div><h3>Mesures</h3><p class="todo">[Performance, accessibilité : chiffres réels uniquement.]</p></div>
-        </div>
+        <h3 class="h3-s">Technologies</h3>
+        <ul class="tags mb-m" aria-label="Technologies"><li class="tag">PHP</li><li class="tag">MySQL</li><li class="tag">MVC</li></ul>
+        
+        <div class="brief brief--1"><div><h3>Choix techniques</h3><ul><li>Architecture MVC : dossiers app/models, app/views et app/controllers.</li><li>Point d'entrée unique (index.php) et configuration séparée.</li></ul></div></div>
       </div>
     </section>
 
@@ -88,7 +107,7 @@
       <div class="container">
         <h2 id="next-title" class="visually-hidden">Projet suivant</h2>
         <p class="label">Projet suivant</p>
-        <a class="text-link" href="/projets/lets-cook">Let's Cook <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        <a class="text-link" href="/projets/quantika">Quantika <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow" /></svg></a>
       </div>
     </section>
   </main>

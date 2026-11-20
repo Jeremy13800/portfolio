@@ -30,6 +30,7 @@ const csp = vercel.headers.flatMap((h) => h.headers).find((h) => h.key === "Cont
 const allowedHashes = [...csp.matchAll(/'sha256-([^']+)'/g)].map((m) => m[1]);
 
 let placeholders = 0;
+const externalLinks = [];
 const resolvePage = (url) => {
   const clean = url.replace(/^\//, "").replace(/\/$/, "");
   if (clean === "") return "index.html";
@@ -60,12 +61,20 @@ for (const page of pages) {
     if (!allowedHashes.includes(hash)) err(page, `script inline non autorisé par la CSP (sha256-${hash})`);
   }
 
+  // Liens sortants autorisés : uniquement des <a> https, ouverts dans un nouvel onglet avec rel="noopener"
+  const externalAnchors = new Set();
+  for (const a of html.matchAll(/<a\b[^>]*\bhref="(https:\/\/[^"]+)"[^>]*>/g)) {
+    if (!/\btarget="_blank"/.test(a[0]) || !/\brel="[^"]*noopener/.test(a[0])) err(page, `lien externe sans target="_blank" rel="noopener" : ${a[1]}`);
+    externalAnchors.add(a[1]);
+  }
+  if (externalAnchors.size) externalLinks.push(...[...externalAnchors].filter((u) => !externalLinks.includes(u)));
+
   // Ressources et liens
   for (const m of html.matchAll(/\b(?:href|src)="([^"]*)"/g)) {
     const url = m[1];
     if (url === "#") { placeholders++; continue; }
     if (url.startsWith("mailto:")) continue;
-    if (/^https?:\/\//.test(url)) { err(page, `ressource ou lien externe : ${url}`); continue; }
+    if (/^https?:\/\//.test(url)) { if (!externalAnchors.has(url)) err(page, `ressource ou lien externe : ${url}`); continue; }
     if (url.startsWith("#")) { if (!ids[page].has(url.slice(1))) err(page, `ancre introuvable : ${url}`); continue; }
     if (url.startsWith("/")) {
       const [path, hash] = url.split("#");
@@ -90,4 +99,5 @@ if (errors.length) {
   for (const e of errors) console.error(`✗ ${e}`);
   process.exit(1);
 }
+if (externalLinks.length) console.log(`ℹ ${externalLinks.length} lien(s) sortant(s) (nouvel onglet, rel=noopener) : ${externalLinks.join(", ")}`);
 console.log("✓ Aucune erreur (liens internes, ressources, CSP, structure).");
