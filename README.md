@@ -13,6 +13,8 @@ npm run build        # build de production        → dist/
 npm run preview      # prévisualiser dist/        → http://localhost:4173
 npm run check        # contrôles du build : liens internes, ressources, CSP, structure
 npm run images       # régénère src/img/ (AVIF + WebP) depuis assets-src/
+npm run test:api     # tests de /api/contact (Resend et Redis simulés)
+npm run dev:api      # API de contact locale (Resend simulé), avec npm run dev
 ```
 
 Node `^20.19.0 || >=22.12.0` requis (Vite 8).
@@ -67,7 +69,30 @@ Pour le lancement, définir ces variables d'environnement au build (Vercel → S
 
 ### Contact
 
-Il n'y a pas de formulaire : le contact passe par des liens `mailto:` (voir `index.html`, section Contact). Si un formulaire est ajouté plus tard, prévoir un service d'envoi, adapter `connect-src` / `form-action` dans la CSP (`vercel.json`) et ne jamais afficher de confirmation tant que le message n'est pas réellement parti.
+Les trois points d'entrée de la section Contact (e-mail, « Mission freelance », « Opportunité professionnelle ») ouvrent une fenêtre unique (`<dialog>` dans `index.html`, logique dans `src/js/contact.js`, chargée à la demande). Titre, description et objet prérempli dépendent de l'attribut `data-contact` ; sans JavaScript, les liens `mailto:` restent le repli.
+
+**Architecture d'envoi** : navigateur → `GET/POST /api/contact` (Vercel Function, `api/contact.js`, logique dans `api/_lib/contact-core.mjs`) → API Resend. Le navigateur ne détient aucun secret. Le succès n'est affiché que si Resend a accepté le message (réponse avec identifiant) ; sinon, une erreur explicite est affichée.
+
+| Variable (Vercel, jamais dans Git) | Rôle |
+|---|---|
+| `RESEND_API_KEY` | Clé API Resend (droit d'envoi uniquement) |
+| `CONTACT_TO_EMAIL` | Boîte qui reçoit les messages |
+| `CONTACT_FROM_EMAIL` | Expéditeur, sur un **domaine vérifié chez Resend** (jamais l'adresse du visiteur ; celle-ci est placée en `Reply-To`) |
+| `CONTACT_FORM_SECRET` | Secret de signature des jetons (32 caractères minimum, aléatoire) |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | Redis partagé pour la limitation de débit (`KV_REST_API_URL` / `KV_REST_API_TOKEN` acceptés) |
+
+Le modèle est dans `.env.example`. Si une variable manque, l'API répond `503 not_configured` et rien n'est envoyé.
+
+**Protections** : méthodes limitées à GET (jeton) et POST ; JSON uniquement, 16 Ko maximum ; validation stricte côté serveur (nom 100, e-mail 254, objet 150, message 5 000 caractères ; caractères de contrôle et retours à la ligne refusés dans les en-têtes) ; champ piège (honeypot) ; **jeton signé HMAC** délivré par le serveur à l'ouverture de la fenêtre (délai minimal de 3 s, validité de 2 h, usage unique : non falsifiable par le navigateur) ; **limitation de débit partagée** dans Redis (5 messages par heure et par IP hachée, 100 par jour au total) ; contenu de l'e-mail échappé (HTML) ; aucune journalisation du message ni des données du visiteur ; réponses JSON sans information sensible.
+
+**Limites** : la limitation par IP repose sur l'en-tête fourni par Vercel ; un attaquant disposant de nombreuses adresses IP peut la contourner, le plafond global de 100 messages par jour limite alors les dégâts (et peut bloquer les vrais visiteurs). Pas de CAPTCHA. Si Redis est indisponible, l'envoi échoue (jamais de succès simulé).
+
+**Mise en route (une seule fois)** : créer un compte Resend et vérifier un domaine d'envoi ; créer une base Upstash Redis (Vercel Marketplace) ; renseigner les variables ci-dessus dans Vercel (Production, Preview si besoin) ; mettre à jour la page de mentions légales (elle indique encore qu'aucun formulaire n'existe : sous-traitants Resend et Upstash, données traitées, conservation) ; envoyer un premier message réel de test.
+
+**Tester en local** : Vite seul n'exécute pas `/api`.
+- `npm run test:api` : tests de la fonction (Resend et Redis simulés, aucun e-mail réel).
+- `npm run dev:api` puis `npm run dev` : le site tourne avec l'API réelle du dépôt, Resend simulé (`MOCK_RESEND=ok|error|network`), le proxy Vite relayant `/api` vers le port 3001. Le message n'est jamais journalisé.
+- Test avec vrais services : `npx vercel dev` (Vercel CLI, projet lié, variables dans `.env.local`).
 
 ### À ajouter quand les informations seront disponibles
 

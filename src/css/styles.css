@@ -2032,3 +2032,165 @@ picture {
   justify-content: space-between;
   gap: 0 1.5rem;
 }
+
+/* ---- Fenêtre de contact (modale unique, trois contextes) ------------------ */
+html.modal-open {
+  overflow: hidden;
+  padding-right: var(--sbw, 0px);
+}
+.contact-dialog {
+  width: min(100% - 1.5rem, 36rem);
+  max-width: none;
+  max-height: calc(100dvh - 1.5rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--fg);
+  overflow: visible;
+}
+.contact-dialog::backdrop {
+  background: rgba(3, 5, 10, 0.78);
+}
+.contact-dialog__card {
+  position: relative;
+  max-height: calc(100dvh - 1.5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(80% 50% at 0% 0%, rgba(142, 162, 255, 0.12), transparent 70%),
+    radial-gradient(60% 40% at 100% 0%, rgba(157, 123, 255, 0.1), transparent 70%),
+    var(--bg-lift);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(142, 162, 255, 0.06);
+}
+.contact-dialog__close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(15, 21, 39, 0.7);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+.contact-dialog__close:hover {
+  color: var(--fg);
+  border-color: var(--cobalt-soft);
+  background: rgba(82, 113, 255, 0.14);
+}
+.contact-dialog__body,
+.contact-dialog__done {
+  display: grid;
+  gap: 1rem;
+}
+.contact-dialog__done {
+  justify-items: start;
+  padding-block: 1rem;
+}
+.contact-dialog__body > .label,
+.contact-dialog__done > .label {
+  padding-right: 3.5rem;
+}
+.contact-dialog__title {
+  font-size: clamp(1.875rem, 1.4rem + 1.8vw, 2.5rem);
+  line-height: 1.05;
+  padding-right: 3rem;
+}
+.contact-dialog__desc {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.contact-dialog__note {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--star);
+  border-radius: 0.6rem;
+  background: rgba(7, 10, 18, 0.55);
+  color: var(--fg);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+#cd-form {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 0.5rem;
+}
+.cd-row {
+  display: grid;
+  gap: 1.1rem;
+}
+@media (min-width: 36em) {
+  .cd-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.contact-dialog textarea.input {
+  min-height: 8.5rem;
+}
+.contact-dialog .input[aria-invalid="true"] {
+  border-color: #ff8fa3;
+}
+.field__error {
+  color: #ff8fa3;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+.cd-status {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0.6rem;
+  background: rgba(7, 10, 18, 0.55);
+  color: var(--fg);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+.cd-status[data-kind="error"] {
+  border-color: #ff8fa3;
+  color: #ffd3dc;
+}
+.cd-actions {
+  position: sticky;
+  bottom: calc(-1 * clamp(1.5rem, 4vw, 2.25rem));
+  margin: 0 calc(-1 * clamp(1.5rem, 4vw, 2.25rem)) calc(-1 * clamp(1.5rem, 4vw, 2.25rem));
+  padding: 0.9rem clamp(1.5rem, 4vw, 2.25rem) clamp(1.5rem, 4vw, 2.25rem);
+  background: linear-gradient(180deg, transparent, var(--bg-lift) 35%);
+}
+.cd-actions .btn {
+  width: 100%;
+}
+.cd-actions .btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .contact-dialog[open] .contact-dialog__card {
+    animation: cd-in 0.32s var(--ease);
+  }
+  .contact-dialog[open]::backdrop {
+    animation: cd-fade 0.32s ease;
+  }
+}
+@keyframes cd-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+}
+@keyframes cd-fade {
+  from {
+    opacity: 0;
+  }
+}
+.contact-dialog [hidden] {
+  display: none !important;
+}

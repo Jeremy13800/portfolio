@@ -71,4 +71,9 @@
       if (typeof svg.pauseAnimations === "function") svg.pauseAnimations();
     });
   }
+
+  /* 6. Fenêtre de contact : chargée uniquement sur la page qui la contient */
+  if (document.getElementById("contact-dialog")) {
+    import("./contact.js").then((m) => m.default());
+  }
 })();

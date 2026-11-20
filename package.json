@@ -12,7 +12,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "images": "node scripts/optimize-images.mjs",
-    "check": "node scripts/check-dist.mjs"
+    "check": "node scripts/check-dist.mjs",
+    "test:api": "node --test tests/contact.test.mjs",
+    "dev:api": "node scripts/dev-api.mjs"
   },
   "devDependencies": {
     "sharp": "^0.35.5",

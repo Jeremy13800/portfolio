@@ -119,5 +119,6 @@ export default defineConfig({
     rollupOptions: { input },
   },
   appType: "mpa", // site multi-pages : pas de repli SPA vers index.html
-  server: { open: false },
+  // En développement, /api/* est relayé vers le serveur local de test (npm run dev:api, Resend simulé).
+  server: { open: false, proxy: { "/api": "http://127.0.0.1:3001" } },
 });
