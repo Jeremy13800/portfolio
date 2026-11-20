@@ -71,5 +71,5 @@ Il n'y a pas de formulaire : le contact passe par des liens `mailto:` (voir `ind
 
 ### À ajouter quand les informations seront disponibles
 
-- Lien LinkedIn et CV (`public/cv.pdf`) : dans le Hero, le pied de page et `sameAs` du JSON-LD (`vite.config.mjs`).
+- Lien vers un CV (`public/cv.pdf`) : dans le Hero et le pied de page.
 - Page de mentions légales (statut de l'éditeur) et son lien dans le pied de page.

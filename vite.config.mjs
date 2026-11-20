@@ -72,11 +72,10 @@ function sitePlugin() {
           );
         }
         if (path === "/") {
-          // Uniquement des informations réelles : nom, métier, URL, profil GitHub (vérifié).
-          // Ajouter LinkedIn dans sameAs dès que l'adresse du profil est confirmée.
+          // Uniquement des informations réelles : nom, métier, URL, profils GitHub et LinkedIn (fournis par Jérémy).
           const graph = [
             { "@type": "WebSite", name: "Jérémy Cailleux", inLanguage: "fr-FR", ...(siteUrl && { url: siteUrl }) },
-            { "@type": "Person", name: "Jérémy Cailleux", jobTitle: "Développeur web", sameAs: ["https://github.com/Jeremy13800"], ...(siteUrl && { url: siteUrl }) },
+            { "@type": "Person", name: "Jérémy Cailleux", jobTitle: "Développeur web", sameAs: ["https://github.com/Jeremy13800", "https://www.linkedin.com/in/j%C3%A9r%C3%A9my-cailleux-7070b4373/"], ...(siteUrl && { url: siteUrl }) },
           ];
           tags.push({
             tag: "script",
