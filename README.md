@@ -81,7 +81,6 @@ La page `mentions-legales.html` est une rédaction factuelle et prudente. **Elle
 1. **Qualification du portfolio** (professionnel ou non professionnel) : la disponibilité pour des missions freelance peut influer sur la qualification ; aucune source consultée ne tranche. Les obligations d'identification de l'éditeur en dépendent.
 2. **Adresse de domiciliation** : déterminer si une adresse (ou une adresse de domiciliation) doit être publiée. L'adresse personnelle n'est pas publiée et ne doit pas l'être sans décision explicite.
 3. **Téléphone de l'hébergeur** : Vercel Inc. (nom et adresse repris de sa politique de confidentialité, en vigueur au 1er juin 2026) ne publie pas de numéro de téléphone sur les pages consultées. À confirmer si son affichage est juridiquement requis.
-4. **Paramètres Vercel** : vérifier dans le tableau de bord qu'aucune mesure d'audience ni journalisation supplémentaire n'est activée, et ce que le compte conserve comme données d'identification de l'éditeur.
 
 ### Décision prise : conservation des e-mails
 
