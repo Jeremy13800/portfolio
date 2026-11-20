@@ -565,8 +565,11 @@ h2 em {
 .hero {
   --H: clamp(7rem, 16vw, 13rem); /* hauteur visible de l'horizon de la planète */
   --D: clamp(56rem, 170vw, 160rem); /* diamètre de la planète */
+  --G: 14rem; /* marge au-dessus de l'horizon pour le halo atmosphérique */
+  --F: clamp(8rem, 15vw, 13rem); /* longueur du fondu sous le Hero, dans la section suivante */
   position: relative;
-  overflow: hidden;
+  /* Écrêtage horizontal seulement : l'horizon peut se prolonger sous le Hero (voir .horizon). */
+  overflow-x: clip;
   isolation: isolate;
   padding-block: clamp(3rem, 7vw, 6.5rem) calc(var(--H) + 2.5rem);
 }
@@ -589,6 +592,9 @@ h2 em {
   z-index: -1;
   width: 100%;
   height: 100%;
+  /* les orbites s'effacent avant le bord du Hero au lieu d'y être coupées */
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 12rem), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 12rem), transparent 100%);
 }
 .hero__orbits ellipse {
   fill: none;
@@ -619,6 +625,62 @@ h2 em {
     0 -6px 30px rgba(120, 150, 255, 0.5),
     0 -50px 140px rgba(82, 113, 255, 0.25);
 }
+/* Horizon du Hero : la planète déborde sous le Hero et s'estompe progressivement
+   (masque) dans la section Projets. Le conteneur clippe aussi la planète (très
+   grande) pour ne pas allonger la page. Au-dessus de la limite du Hero, le rendu
+   reste celui d'origine. */
+.horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% - var(--H) - var(--G));
+  height: calc(var(--H) + var(--G) + var(--F));
+  z-index: -1;
+  overflow: clip;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0,
+    #000 calc(var(--G) + var(--H)),
+    rgba(0, 0, 0, 0.72) calc(var(--G) + var(--H) + var(--F) * 0.25),
+    rgba(0, 0, 0, 0.38) calc(var(--G) + var(--H) + var(--F) * 0.5),
+    rgba(0, 0, 0, 0.12) calc(var(--G) + var(--H) + var(--F) * 0.75),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0,
+    #000 calc(var(--G) + var(--H)),
+    rgba(0, 0, 0, 0.72) calc(var(--G) + var(--H) + var(--F) * 0.25),
+    rgba(0, 0, 0, 0.38) calc(var(--G) + var(--H) + var(--F) * 0.5),
+    rgba(0, 0, 0, 0.12) calc(var(--G) + var(--H) + var(--F) * 0.75),
+    transparent 100%
+  );
+}
+.horizon .planet {
+  top: var(--G);
+}
+
+/* Brume bleutée très légère, centrée sous le sommet de la planète : prolonge la
+   lumière de l'horizon dans le haut de la section Projets (aucune coupure : le
+   dégradé s'annule avant les bords de son cadre). */
+#projects::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -12rem;
+  left: 0;
+  right: 0;
+  height: clamp(30rem, 48vw, 40rem);
+  background: radial-gradient(
+    ellipse 50% 50% at 66% 35%,
+    rgba(82, 113, 255, 0.14) 0,
+    rgba(82, 113, 255, 0.05) 40%,
+    transparent 66%
+  );
+  pointer-events: none;
+}
+
 .planet::after {
   /* éclat de lumière sur l'horizon (étoile hors champ) */
   content: "";
