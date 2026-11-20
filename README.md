@@ -72,4 +72,21 @@ Il n'y a pas de formulaire : le contact passe par des liens `mailto:` (voir `ind
 ### À ajouter quand les informations seront disponibles
 
 - Lien vers un CV (`public/cv.pdf`) : dans le Hero et le pied de page.
-- Page de mentions légales (statut de l'éditeur) et son lien dans le pied de page.
+- Mentions légales : la page `mentions-legales.html` existe (lien dans le pied de page) ; voir « Vérifications juridiques avant publication » ci-dessous.
+
+## Vérifications juridiques avant publication
+
+La page `mentions-legales.html` est une rédaction factuelle et prudente. **Elle n'est pas une validation juridique et ne doit pas être considérée comme conforme** tant que les points suivants ne sont pas résolus (ils ne le sont pas à ce jour) :
+
+1. **Qualification du portfolio** (professionnel ou non professionnel) : la disponibilité pour des missions freelance peut influer sur la qualification ; aucune source consultée ne tranche. Les obligations d'identification de l'éditeur en dépendent.
+2. **Adresse de domiciliation** : déterminer si une adresse (ou une adresse de domiciliation) doit être publiée. L'adresse personnelle n'est pas publiée et ne doit pas l'être sans décision explicite.
+3. **Téléphone de l'hébergeur** : Vercel Inc. (nom et adresse repris de sa politique de confidentialité, en vigueur au 1er juin 2026) ne publie pas de numéro de téléphone sur les pages consultées. À confirmer si son affichage est juridiquement requis.
+4. **Paramètres Vercel** : vérifier dans le tableau de bord qu'aucune mesure d'audience ni journalisation supplémentaire n'est activée, et ce que le compte conserve comme données d'identification de l'éditeur.
+
+### Décision prise : conservation des e-mails
+
+La durée de conservation des e-mails reçus via le contact du portfolio est **définie : 12 mois maximum à compter du dernier échange**, puis suppression (sauf conservation plus longue nécessaire pour respecter une obligation légale, gérer une relation contractuelle ou défendre des droits en justice). Il s'agit d'un choix de gestion, et non d'une durée imposée par le RGPD. Elle est indiquée dans la section Confidentialité de la page ; elle ne concerne ni les journaux techniques de l'hébergeur, ni d'autres traitements.
+
+**À faire :** appliquer réellement cette politique dans la messagerie (suppression ou archivage des échanges de plus de 12 mois après le dernier message), par exemple par un rappel périodique.
+
+Avant publication : faire valider la page par un professionnel du droit si nécessaire, mettre à jour la date « Dernière mise à jour » de la page.

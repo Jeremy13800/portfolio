@@ -19,7 +19,7 @@ const siteUrl = (
   (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "")
 ).replace(/\/+$/, "");
 
-/* Pages : index, 404 et chaque projets/*.html (ajouter une étude de cas = ajouter un fichier) */
+/* Pages : index, 404, mentions légales et chaque projets/*.html (ajouter une étude de cas = ajouter un fichier) */
 const projectSlugs = readdirSync(resolve(root, "projets"))
   .filter((f) => f.endsWith(".html"))
   .map((f) => f.replace(/\.html$/, ""));
@@ -27,6 +27,7 @@ const projectSlugs = readdirSync(resolve(root, "projets"))
 const input = {
   index: resolve(root, "index.html"),
   "404": resolve(root, "404.html"),
+  "mentions-legales": resolve(root, "mentions-legales.html"),
   ...Object.fromEntries(projectSlugs.map((s) => [`projets/${s}`, resolve(root, "projets", `${s}.html`)])),
 };
 
@@ -96,7 +97,7 @@ function sitePlugin() {
       this.emitFile({ type: "asset", fileName: "robots.txt", source: robots });
 
       if (indexable && siteUrl) {
-        const urls = ["/", ...projectSlugs.map((s) => `/projets/${s}`)];
+        const urls = ["/", "/mentions-legales", ...projectSlugs.map((s) => `/projets/${s}`)];
         const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
           .map((u) => `  <url><loc>${siteUrl}${u === "/" ? "/" : u}</loc></url>`)
           .join("\n")}\n</urlset>\n`;

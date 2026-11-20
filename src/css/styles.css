@@ -1905,3 +1905,77 @@ picture {
     grid-template-columns: 1fr;
   }
 }
+
+/* ---- Page « Mentions légales & Confidentialité » (composants existants + typographie sobre) ---- */
+.legal {
+  display: grid;
+  gap: 0;
+  max-width: 48rem;
+}
+.legal .ext-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+.legal__date {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--subtle);
+}
+.legal__block {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--line);
+}
+.legal__block h2 {
+  font-size: clamp(1.5rem, 1.25rem + 0.8vw, 1.875rem);
+  line-height: 1.1;
+}
+.legal__block h3 {
+  margin: 0.9rem 0 0;
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+}
+.legal__block p,
+.legal__block li,
+.legal__list dd {
+  color: var(--muted);
+}
+.legal__block a:not(.ext-link),
+.legal__block .ext-link {
+  color: var(--cobalt-soft);
+  text-underline-offset: 0.25em;
+}
+.legal__list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+}
+.legal__list dt {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--subtle);
+}
+.legal__list dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+@media (min-width: 40em) {
+  .legal__list > div {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 1rem;
+  }
+}
+.site-footer .footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 1.5rem;
+}
