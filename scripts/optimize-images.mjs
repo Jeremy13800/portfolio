@@ -27,7 +27,6 @@ const jobs = [
   // Ne jamais placer ici la capture d'origine.
   { name: "asl-carte", file: "asl-carte.png", widths: [640, 1280], avifQ: 60, webpQ: 85 },
   { name: "asl-ecran", file: "asl-ecran.png", widths: [640, 1280, 1904], avifQ: 60, webpQ: 85 },
-  { name: "galaxie-provisoire", file: "galaxie-provisoire.webp", widths: [688], avifQ: 50, webpQ: 78 },
 ];
 
 await mkdir(outDir, { recursive: true });

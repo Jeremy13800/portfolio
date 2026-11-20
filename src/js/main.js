@@ -71,21 +71,4 @@
       if (typeof svg.pauseAnimations === "function") svg.pauseAnimations();
     });
   }
-
-  /* 6. Formulaire : démonstration, n'envoie rien ---------------------------- */
-  const form = document.getElementById("demo-form");
-  const status = document.getElementById("form-status");
-  if (form && status) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const missing = [...form.querySelectorAll("[required]")].filter((f) => !f.value.trim());
-      if (missing.length) {
-        status.textContent = "Merci de renseigner : " +
-          missing.map((f) => form.querySelector(`label[for="${f.id}"]`).firstChild.textContent.trim().toLowerCase()).join(", ") + ".";
-        missing[0].focus();
-        return;
-      }
-      status.textContent = "Démonstration : votre message n'a pas été envoyé, aucune donnée ne quitte cette page.";
-    });
-  }
 })();

@@ -51,9 +51,9 @@ vercel.json                 URL propres, en-têtes de sécurité (CSP), cache
   Si vous le modifiez, recalculez l'empreinte et mettez à jour `vercel.json` (`npm run check` signale l'écart).
 - Aucune ressource externe (polices, CDN, analytics) : elles seraient bloquées.
 
-## Mise en ligne : état « version de travail »
+## Mise en ligne
 
-Par défaut le site est **non indexable** (`noindex`, `robots.txt` en `Disallow: /`), car des contenus sont encore provisoires.
+Par défaut le site est **non indexable** (`noindex`, `robots.txt` en `Disallow: /`) : l'indexation s'active au lancement.
 Pour le lancement, définir ces variables d'environnement au build (Vercel → Settings → Environment Variables, Production) :
 
 | Variable | Effet |
@@ -61,12 +61,15 @@ Pour le lancement, définir ces variables d'environnement au build (Vercel → S
 | `SITE_URL` | URL publique réelle (ex. `https://mon-domaine.fr`). Active canonical, `og:url`, `og:image` absolue, URL du JSON-LD. Sur Vercel, `VERCEL_PROJECT_PRODUCTION_URL` sert de repli. |
 | `INDEXABLE=true` | Retire le `noindex`, ouvre `robots.txt` et génère `sitemap.xml` (si l'URL est connue). |
 
-### Checklist avant lancement
+### Contrôles avant chaque mise en ligne
 
-- [ ] Remplacer tous les contenus provisoires (crochets `[…]`, badges « provisoire », « à fournir »).
-- [ ] Renseigner les liens GitHub, LinkedIn, CV (`public/cv.pdf`) et mentions légales (26 liens `href="#"`).
-- [ ] Ajouter de vraies captures pour Quantika et Let's Cook, un portrait, et confirmer les droits de la photo de galaxie.
-- [ ] Supprimer le bandeau « VERSION DE TRAVAIL » (`partials/chrome.html`).
-- [ ] Définir `SITE_URL` et `INDEXABLE=true`, puis mesurer (Lighthouse, PageSpeed) sur le déploiement réel.
-- [ ] Brancher le formulaire de contact (actuellement en **démonstration** : il n'envoie rien). Si un service est ajouté, adapter `connect-src` / `form-action` dans la CSP.
-- [ ] Ajouter `sameAs` (GitHub, LinkedIn) au JSON-LD dans `vite.config.mjs` une fois les profils renseignés.
+`npm run build && npm run check` vérifie notamment l'absence de mentions provisoires (« à compléter », « provisoire », crochets, adresses fictives) et de liens `href="#"` dans les pages construites.
+
+### Contact
+
+Il n'y a pas de formulaire : le contact passe par des liens `mailto:` (voir `index.html`, section Contact). Si un formulaire est ajouté plus tard, prévoir un service d'envoi, adapter `connect-src` / `form-action` dans la CSP (`vercel.json`) et ne jamais afficher de confirmation tant que le message n'est pas réellement parti.
+
+### À ajouter quand les informations seront disponibles
+
+- Lien LinkedIn et CV (`public/cv.pdf`) : dans le Hero, le pied de page et `sameAs` du JSON-LD (`vite.config.mjs`).
+- Page de mentions légales (statut de l'éditeur) et son lien dans le pied de page.

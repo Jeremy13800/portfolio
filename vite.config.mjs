@@ -3,8 +3,8 @@
 // Variables d'environnement (build) :
 //   SITE_URL    URL publique du site, ex. https://exemple.fr (sinon VERCEL_PROJECT_PRODUCTION_URL sur Vercel).
 //               Sans URL réelle : pas de canonical, d'og:url, d'og:image absolue ni de sitemap.
-//   INDEXABLE   "true" pour autoriser l'indexation. Par défaut le site reste en noindex
-//               (contenus encore provisoires) et robots.txt interdit l'exploration.
+//   INDEXABLE   "true" pour autoriser l'indexation (à définir au lancement). Par défaut le site
+//               reste en noindex et robots.txt interdit l'exploration.
 import { defineConfig } from "vite";
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
@@ -72,10 +72,11 @@ function sitePlugin() {
           );
         }
         if (path === "/") {
-          // Uniquement des informations réelles : nom, métier, URL. Pas de sameAs tant que GitHub/LinkedIn ne sont pas renseignés.
+          // Uniquement des informations réelles : nom, métier, URL, profil GitHub (vérifié).
+          // Ajouter LinkedIn dans sameAs dès que l'adresse du profil est confirmée.
           const graph = [
             { "@type": "WebSite", name: "Jérémy Cailleux", inLanguage: "fr-FR", ...(siteUrl && { url: siteUrl }) },
-            { "@type": "Person", name: "Jérémy Cailleux", jobTitle: "Développeur web", ...(siteUrl && { url: siteUrl }) },
+            { "@type": "Person", name: "Jérémy Cailleux", jobTitle: "Développeur web", sameAs: ["https://github.com/Jeremy13800"], ...(siteUrl && { url: siteUrl }) },
           ];
           tags.push({
             tag: "script",

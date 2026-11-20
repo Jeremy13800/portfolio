@@ -53,6 +53,25 @@ for (const page of pages) {
     if (!/\bwidth="/.test(img[0]) || !/\bheight="/.test(img[0])) err(page, `image sans width/height : ${img[0].slice(0, 60)}`);
   }
 
+  // Contenus provisoires : aucune mention de ce type ne doit être visible par les visiteurs
+  const visible = html
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/<(script|style)[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&[a-z#0-9]+;/gi, " ");
+  const visibleAttrs = [...html.matchAll(/\b(?:alt|aria-label|title|content)="([^"]*)"/g)].map((m) => m[1]).join(" \n ");
+  const markers = [
+    [/à compléter|a completer|à vérifier|à préciser|à confirmer|à valider|à fournir|à écrire/i, "mention « à compléter / vérifier / confirmer… »"],
+    [/provisoire|version de travail|texte à valider|placeholder|lorem ipsum|\bTODO\b|\bFIXME\b/i, "mention provisoire"],
+    [/démonstration|\bdemo\b/i, "mention de démonstration"],
+    [/\[[^\]\n]{1,80}\]/, "texte entre crochets (champ à remplir)"],
+    [/example\.com|exemple\.fr|@test\./i, "adresse fictive"],
+  ];
+  for (const [re, label] of markers) {
+    const hit = (visible + " " + visibleAttrs).match(re);
+    if (hit) err(page, `${label} : « ${hit[0]} »`);
+  }
+
   // CSP : pas de style inline, scripts inline = hash autorisé
   if (/\sstyle="/.test(html)) err(page, "attribut style= présent (bloqué par la CSP)");
   if (/<style[\s>]/.test(html)) err(page, "balise <style> présente (bloquée par la CSP)");
@@ -72,7 +91,7 @@ for (const page of pages) {
   // Ressources et liens
   for (const m of html.matchAll(/\b(?:href|src)="([^"]*)"/g)) {
     const url = m[1];
-    if (url === "#") { placeholders++; continue; }
+    if (url === "#") { err(page, 'lien href="#" sans destination'); continue; }
     if (url.startsWith("mailto:")) continue;
     if (/^https?:\/\//.test(url)) { if (!externalAnchors.has(url)) err(page, `ressource ou lien externe : ${url}`); continue; }
     if (url.startsWith("#")) { if (!ids[page].has(url.slice(1))) err(page, `ancre introuvable : ${url}`); continue; }
