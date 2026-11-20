@@ -72,10 +72,10 @@ function sitePlugin() {
           );
         }
         if (path === "/") {
-          // Uniquement des informations réelles : nom, métier, URL, profils GitHub et LinkedIn (fournis par Jérémy).
+          // Uniquement des informations réelles : nom, métier, URL, profils GitHub et LinkedIn (fournis par Jérémy), ville/région/pays (aucune adresse postale).
           const graph = [
             { "@type": "WebSite", name: "Jérémy Cailleux", inLanguage: "fr-FR", ...(siteUrl && { url: siteUrl }) },
-            { "@type": "Person", name: "Jérémy Cailleux", jobTitle: "Développeur web", sameAs: ["https://github.com/Jeremy13800", "https://www.linkedin.com/in/j%C3%A9r%C3%A9my-cailleux-7070b4373/"], ...(siteUrl && { url: siteUrl }) },
+            { "@type": "Person", name: "Jérémy Cailleux", jobTitle: "Développeur web", address: { "@type": "PostalAddress", addressLocality: "Istres", addressRegion: "Provence-Alpes-Côte d'Azur", addressCountry: "FR" }, sameAs: ["https://github.com/Jeremy13800", "https://www.linkedin.com/in/j%C3%A9r%C3%A9my-cailleux-7070b4373/"], ...(siteUrl && { url: siteUrl }) },
           ];
           tags.push({
             tag: "script",
